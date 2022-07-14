@@ -167,12 +167,12 @@
     },
     "itemize": {
         "prefix": "BIT",
-        "body": "\\begin{itemize}\n\t\\item ${0:${TM_SELECTED_TEXT}}\n\\end{itemize}",
+        "body": "\\begin{itemize}\n\t%\\setlength\\itemsep{0pc}\n\t\\item ${0:${TM_SELECTED_TEXT}}\n\\end{itemize}",
         "description": "itemize environment"
     },
     "enumerate": {
         "prefix": "BEN",
-        "body": "\\begin{enumerate}\n\t\\item ${0:${TM_SELECTED_TEXT}}\n\\end{enumerate}",
+        "body": "\\begin{enumerate}\n\t%\\setlength\\itemsep{0pc}\\item ${0:${TM_SELECTED_TEXT}}\n\\end{enumerate}",
         "description": "enumerate environment"
     },
     "split": {
@@ -187,17 +187,27 @@
     },
     "frame": {
         "prefix": "BFR",
-        "body": "\\begin{frame}\n\t\\frametitle{${1:<title>}}\n\n\t${0:${TM_SELECTED_TEXT}}\n\n\\end{frame}",
+        "body": "\\begin{frame}{$1}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{frame}",
         "description": "frame"
     },
     "figure": {
         "prefix": "BFI",
-        "body": "\\begin{figure}[${1:htbp}]\n\t\\centering\n\t${0:${TM_SELECTED_TEXT}}\n\t\\caption{${2:<caption>}}\\label{${3:<label>}}\n\\end{figure}",
+        "body": "\\begin{figure}[${4:htbp}]\n\t\\centering\n\t$1\n\t\\caption{$2}\n\t\\label{fig:$3}\n\\end{figure}",
         "description": "figure"
+    },
+    "includegraphics": {
+        "prefix": "GRA",
+        "body": "\\includegraphics[width=\\textwidth]{$1}",
+        "description": "include graphics"
+    },
+    "includesvg": {
+        "prefix": "SVG",
+        "body": "\\includesvg[pretex=\\small, width=\\textwidth]{$1}",
+        "description": "include svg"
     },
     "table": {
         "prefix": "BTA",
-        "body": "\\begin{table}[${1:htbp}]\n\t\\centering\\begin{tabular}{${4:<columns>}}\n\t\t${0:${TM_SELECTED_TEXT}}\n\t\\end{tabular}\n\t\\caption{${2:<caption>}}\\label{${3:<label>}}\n\\end{table}",
+        "body": "\\begin{table}[${1:htbp}]\n\t\\bgroup\\def\\arraystretch{1.0}\n\t\\centering\\begin{tabular}{${4:<columns>}}\n\t\t${0:${TM_SELECTED_TEXT}}\n\t\\end{tabular}\n\t\\caption{${2:<caption>}}\n\t\\label{${3:<label>}}\n\\end{table}",
         "description": "table"
     },
     "tikzpicture": {
@@ -533,6 +543,7 @@
         "prefix": "SSE",
         "body": "\\section{${1:${TM_SELECTED_TEXT}}}",
         "description": "section"
+
     },
     "subsection": {
         "prefix": "SSS",
@@ -553,5 +564,20 @@
         "prefix": "SSP",
         "body": "\\subparagraph{${1:${TM_SELECTED_TEXT}}}",
         "description": "subparagraph"
+    },
+    "column2": {
+        "prefix": "BCOL",
+        "body": "\\begin{columns}\n\t\\begin{column}{0.5\\textwidth}\n\t\t${1:${TM_SELECTED_TEXT}}\n\t\\end{column}\n\t\\begin{column}{0.5\\textwidth}\n\t\t$2\n\t\\end{column}\n\\end{columns}",
+        "description": "Two-column layout"
+    },
+    "column3": {
+        "prefix": "BCOL3",
+        "body": "\\begin{columns}\n\t\\begin{column}{0.33\\textwidth}\n\t\t${1:${TM_SELECTED_TEXT}}\n\t\\end{column}\n\t\\begin{column}{0.33\\textwidth}\n\t\t$2\n\t\\end{column}\n\t\\begin{column}{0.33\\textwidth}\n\t\t$3\n\t\\end{column}\n\\end{columns}",
+        "description": "Three-column layout"
+    },
+    "column4": {
+        "prefix": "BCOL4",
+        "body": "\\begin{columns}\n\t\\begin{column}{0.25\\textwidth}\n\t\t${1:${TM_SELECTED_TEXT}}\n\t\\end{column}\n\t\\begin{column}{0.25\\textwidth}\n\t\t$2\n\t\\end{column}\n\t\\begin{column}{0.25\\textwidth}\n\t\t$3\n\t\\end{column}\n\t\\begin{column}{0.25\\textwidth}\n\t\t$4\n\t\\end{column}\n\\end{columns}",
+        "description": "Four-column layout"
     }
 }
